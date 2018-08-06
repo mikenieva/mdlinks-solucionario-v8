@@ -1,0 +1,25 @@
+{
+  "name": "md-links",
+  "version": "1.0.0",
+  "description": "Markdown link extractor",
+  "main": "index.js",
+  "bin": {
+    "md-links": "./index.js"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "eslint": "^5.2.0",
+    "eslint-config-google": "^0.9.1"
+  },
+  "dependencies": {
+    "markdown-link-extractor": "^1.2.0",
+    "marked": "^0.4.0",
+    "node-fetch": "^2.2.0",
+    "path": "^0.12.7"
+  }
+}
