@@ -1,16 +1,20 @@
 #!/usr/bin/env node
 
-const mdLinks = require('./lib/mdlinks').mdLinks;
+const mdLinks = require('./lib/mdlinks');
 
-if (require.main === module) {
   let options = {};
-  if (process.argv.indexOf('--validate')) {
+  if (process.argv.indexOf('--validate') !== -1) {
     options.validate = true;
   }
+
+  if (process.argv.indexOf('--stats') !== -1) {
+    options.stats = true;
+  }
+
   mdLinks(process.argv[2], options).then((links)=>{
     links.forEach((link) => {
-      if (link.ok) {
-        console.log(link.file, ':', link.line, link.href, 'ok:', link.ok);
+      if (link.status) {
+        console.log(link.file, ':', link.line, link.href, 'status:', link.status);
       } else {
         console.log(link.file, ':', link.line, link.href);
       }
@@ -19,6 +23,5 @@ if (require.main === module) {
     console.error('MDLinks ha fallado, revisa que has puesto una ruta válida');
     console.error('Error', error);
   });
-}
 
 module.exports = mdLinks;
